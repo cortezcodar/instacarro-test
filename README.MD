@@ -1,6 +1,6 @@
-## Leilao de Carro, Instacarro
+## Leilão de Carro, Instacarro
 
-A plataforma "Leilão de Carros" é um aplicativo que permite que os usuários participem de leilões de carros cadastrados na plataforma. Abaixo estão os principais aspectos do cenário do problema:
+A plataforma "Leilão de Carros" é um aplicativo que permite que os usuários participem de leilões de carros cadastrados na plataforma. Abaixo estão os principais aspectos do cenário do Leilão:
 
 ### Cadastro de Carros
 
