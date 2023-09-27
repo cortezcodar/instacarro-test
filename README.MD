@@ -46,11 +46,36 @@ Siga os passos abaixo para configurar e executar o projeto:
 
 1. Clone este repositório para o seu ambiente local:
 
-````bash
-git clone https://github.com/seu-usuario/leilao-de-carros.git
+```bash
+git clone https://github.com/cortezcodar/instacarro-test.git
 cd leilao-de-carros
+```
 
+```json
+npm install
+```
 
+1. **Criar o arquivo** .env copia todos os dados que estar na .env.example e configure com suas credenciais
+
+2. .env.example
+
+   **MONGODB_NAME**
+   **MONGODB_PASSWORD**
+   **JWT_SECRET**
+   **SESSION_SECRET**
+   **ACCESS_TOKEN_SECRET**
+
+   3.**Execute** a aplicação usando o comando ``yarn start` no terminal (ou npm run start)
+   Obs.: para gerar chaves precisa rodar o simples comando no terminal `
+
+   ```json
+   openssl rand -base64 32`
+   ```
+
+```
+4. Levantar o banco de dados
+   `docker compose up -d`
+```
 
 ## Tecnologias Principais
 
@@ -79,8 +104,6 @@ cd leilao-de-carros
 - **prettier**: Ferramenta de formatação de código JavaScript.
 
 - **ts-jest**: Extensão do Jest para suportar TypeScript.
-
-
 
 ## Cadastro de Carros
 
@@ -122,7 +145,7 @@ POST /api/carros/cadastrar
   "plate": "ABC-1234",
   "mileage": "30000 miles
   }
-````
+```
 
 **Resposta de Sucesso:**
 
