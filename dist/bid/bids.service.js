@@ -41,7 +41,7 @@ let BidsService = class BidsService {
             .find({
             user: userId,
         })
-            .populate('bid.auction.Car', 'title description category images')
+            .populate('bid.auction.Car', 'model  version  images')
             .populate('bid');
         return await bidsQuery.exec();
     }

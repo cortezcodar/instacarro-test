@@ -1,7 +1,7 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
-import { Auction } from 'src/auctions/entities/auction.entity';
-import { User } from 'src/users/entities/user.entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import * as mongoose from "mongoose";
+import { Auction } from "../../auctions/entities/auction.entity";
+import { User } from "../../users/entities/user.entity";
 
 export type CarDocument = Car & mongoose.Document;
 
@@ -9,7 +9,7 @@ export type CarDocument = Car & mongoose.Document;
   timestamps: true,
 })
 export class Car {
-  @Prop({ required: '{PATH} is required!' })
+  @Prop({ required: "{PATH} is required!" })
   model: string;
 
   @Prop()
@@ -44,13 +44,13 @@ export class Car {
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   })
   user: User;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Auction',
+    ref: "Auction",
   })
   auction?: Auction;
 }

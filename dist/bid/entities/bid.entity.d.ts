@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
-import { Auction } from 'src/auctions/entities/auction.entity';
-import { User } from 'src/users/entities/user.entity';
+import * as mongoose from "mongoose";
+import { Auction } from "../../auctions/entities/auction.entity";
+import { User } from "../../users/entities/user.entity";
 export type BidDocument = Bid & mongoose.Document;
 export declare class Bid {
     auction: Auction;

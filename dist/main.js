@@ -5,14 +5,14 @@ const app_module_1 = require("./app.module");
 const cookieParser = require("cookie-parser");
 const validationPipe_1 = require("./config/validationPipe");
 const session = require("express-session");
-const Swagger_1 = require("./config/Swagger");
+const swagger_1 = require("./config/swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use(cookieParser());
     app.useGlobalPipes(new validationPipe_1.ValidationPipe());
     app.enableCors({
         credentials: true,
-        allowedHeaders: '* .',
+        allowedHeaders: "* .",
         origin: true,
     });
     app.use(session({
@@ -20,7 +20,7 @@ async function bootstrap() {
         resave: false,
         saveUninitialized: false,
     }));
-    (0, Swagger_1.SwaggerInite)(app);
+    (0, swagger_1.SwaggerInit)(app);
     await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

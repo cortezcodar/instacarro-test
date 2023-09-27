@@ -19,14 +19,14 @@ let Bid = class Bid {
 __decorate([
     (0, mongoose_1.Prop)({
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Auction',
+        ref: "Auction",
     }),
     __metadata("design:type", auction_entity_1.Auction)
 ], Bid.prototype, "auction", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
     }),
     __metadata("design:type", user_entity_1.User)
 ], Bid.prototype, "user", void 0);

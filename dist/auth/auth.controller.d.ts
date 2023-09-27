@@ -1,8 +1,8 @@
-import { Response } from 'express';
-import { AuthService } from './auth.service';
-import { SignUpDto } from './dto/singup.dto';
-import { RequestWithUser } from './dto/request.dto';
-import { SignInDto } from './dto/singin.dto';
+import { Response } from "express";
+import { AuthService } from "./auth.service";
+import { SignUpDto } from "./dto/singup.dto";
+import { RequestWithUser } from "./dto/request.dto";
+import { SignInDto } from "./dto/singin.dto";
 export declare class AuthController {
     private authService;
     constructor(authService: AuthService);

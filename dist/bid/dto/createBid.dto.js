@@ -23,7 +23,7 @@ __decorate([
 ], CreateBidDto.prototype, "auction", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)({
-        maxDecimalPlaces: 2,
+        maxDecimalPlaces: 4,
     }),
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)

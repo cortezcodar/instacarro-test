@@ -17,7 +17,7 @@ const user_entity_1 = require("../../users/entities/user.entity");
 let Car = class Car {
 };
 __decorate([
-    (0, mongoose_1.Prop)({ required: '{PATH} is required!' }),
+    (0, mongoose_1.Prop)({ required: "{PATH} is required!" }),
     __metadata("design:type", String)
 ], Car.prototype, "model", void 0);
 __decorate([
@@ -63,14 +63,14 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
     }),
     __metadata("design:type", user_entity_1.User)
 ], Car.prototype, "user", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Auction',
+        ref: "Auction",
     }),
     __metadata("design:type", auction_entity_1.Auction)
 ], Car.prototype, "auction", void 0);

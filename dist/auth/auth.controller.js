@@ -51,7 +51,7 @@ let AuthController = class AuthController {
 };
 __decorate([
     (0, auth_guard_1.Public)(),
-    (0, common_1.Post)('singup'),
+    (0, common_1.Post)("singup"),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
@@ -61,7 +61,7 @@ __decorate([
 __decorate([
     (0, auth_guard_1.Public)(),
     (0, common_1.UseGuards)(local_guard_1.LocalAuthGuard),
-    (0, common_1.Post)('singin'),
+    (0, common_1.Post)("singin"),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Req)()),
     __param(2, (0, common_1.Res)()),
@@ -71,7 +71,7 @@ __decorate([
 ], AuthController.prototype, "signIn", null);
 __decorate([
     (0, swagger_1.ApiCookieAuth)(process.env.ACCESS_TOKEN_COOKIE_NAME),
-    (0, common_1.Post)('logout'),
+    (0, common_1.Post)("logout"),
     __param(0, (0, common_1.Res)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -79,15 +79,15 @@ __decorate([
 ], AuthController.prototype, "signOut", null);
 __decorate([
     (0, swagger_1.ApiCookieAuth)(process.env.ACCESS_TOKEN_COOKIE_NAME),
-    (0, common_1.Get)('profile'),
+    (0, common_1.Get)("profile"),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "getProfile", null);
 AuthController = __decorate([
-    (0, swagger_1.ApiTags)('auth'),
-    (0, common_1.Controller)('auth'),
+    (0, swagger_1.ApiTags)("auth"),
+    (0, common_1.Controller)("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 exports.AuthController = AuthController;

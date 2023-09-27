@@ -11,19 +11,19 @@ import {
   Res,
   HttpStatus,
   BadRequestException,
-} from '@nestjs/common';
-import { CarsService } from './cars.service';
-import { Car } from './entities/car.entity';
-import { RequestWithUser } from 'src/auth/dto/request.dto';
-import { ApiBody, ApiCookieAuth, ApiTags } from '@nestjs/swagger';
-import { Response } from 'express';
-import { Types } from 'mongoose';
-import { CreateCarDto } from './dto/createCar.dto';
-import { UpdateCarDto } from './dto/updateProduct.dto';
+} from "@nestjs/common";
+import { CarsService } from "./cars.service";
+import { Car } from "./entities/car.entity";
+import { RequestWithUser } from "src/auth/dto/request.dto";
+import { ApiBody, ApiCookieAuth, ApiTags } from "@nestjs/swagger";
+import { Response } from "express";
+import { Types } from "mongoose";
+import { CreateCarDto } from "./dto/createCar.dto";
+import { UpdateCarDto } from "./dto/updateProduct.dto";
 
-@ApiTags('Cars')
+@ApiTags("Cars")
 @ApiCookieAuth(process.env.ACCESS_TOKEN_COOKIE_NAME)
-@Controller('Cars')
+@Controller("Cars")
 export class CarsController {
   constructor(private readonly CarsService: CarsService) {}
 
@@ -31,7 +31,7 @@ export class CarsController {
   async create(
     @Body() Car: CreateCarDto,
     @Req() req: RequestWithUser,
-    @Res() res: Response,
+    @Res() res: Response
   ) {
     const {
       model,
@@ -60,7 +60,7 @@ export class CarsController {
         image,
         year,
       },
-      req.user.id,
+      req.user.id
     );
     return res.status(HttpStatus.CREATED).json(CarCreated);
   }
@@ -71,41 +71,41 @@ export class CarsController {
     return res.json(Cars);
   }
 
-  @Get(':id')
+  @Get(":id")
   async findOne(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Req() req: RequestWithUser,
-    @Res() res: Response,
+    @Res() res: Response
   ) {
     if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('Car not found!');
+      throw new BadRequestException("Car not found!");
     }
     const Cars = await this.CarsService.findOne(id, req.user.id);
     return res.json(Cars);
   }
 
-  @Patch(':id')
+  @Patch(":id")
   async update(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() updateCarDto: UpdateCarDto,
     @Req() req: RequestWithUser,
-    @Res() res: Response,
+    @Res() res: Response
   ) {
     if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('Car not found!');
+      throw new BadRequestException("Car not found!");
     }
     const Car = await this.CarsService.update(id, updateCarDto, req.user.id);
     return res.json(Car);
   }
 
-  @Delete(':id')
+  @Delete(":id")
   async remove(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Req() req: RequestWithUser,
-    @Res() res: Response,
+    @Res() res: Response
   ) {
     if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('Car not found!');
+      throw new BadRequestException("Car not found!");
     }
     await this.CarsService.remove(id, req.user.id);
     return res.json({

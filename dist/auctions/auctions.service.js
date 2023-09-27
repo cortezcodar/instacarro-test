@@ -29,7 +29,7 @@ let AuctionsService = class AuctionsService {
         var _a;
         const CarFromUser = await this.CarsService.findOne(CarId, userId);
         if (!CarFromUser) {
-            throw new common_1.NotFoundException('Car not found!');
+            throw new common_1.NotFoundException("Car not found!");
         }
         auction.status = (_a = auction === null || auction === void 0 ? void 0 : auction.status) !== null && _a !== void 0 ? _a : auctionStatus_enum_1.AuctionStatusEnum.AWAITING;
         const auctionSaved = await this.auctionModel
@@ -49,26 +49,26 @@ let AuctionsService = class AuctionsService {
         }
         const auctionsQuery = await this.auctionModel
             .find(filter)
-            .populate('Car', 'title description category images');
+            .populate("Car", " description images");
         return auctionsQuery;
     }
     async findOne(id) {
         return await this.auctionModel
             .findById(id)
-            .populate('Car', 'title description category images')
+            .populate("Car", "model description version image")
             .populate({
-            path: 'bids',
+            path: "bids",
             populate: {
-                path: 'user',
+                path: "user",
                 model: user_entity_1.User.name,
-                select: 'name',
+                select: "name",
             },
         });
     }
     async update(id, auction, userId) {
-        const auctionSearch = await this.auctionModel.findById(id).populate('Car');
+        const auctionSearch = await this.auctionModel.findById(id).populate("Car");
         if (auctionSearch.Car.user._id.toString() != userId) {
-            throw new common_1.NotFoundException('Auction not found!');
+            throw new common_1.NotFoundException("Auction not found!");
         }
         const auctionUpdated = await this.auctionModel
             .findByIdAndUpdate(id, auction)
@@ -76,9 +76,9 @@ let AuctionsService = class AuctionsService {
         return auctionUpdated.toObject();
     }
     async remove(id, userId) {
-        const auctionSearch = (await this.findOne(id)).populate('Car.user');
+        const auctionSearch = (await this.findOne(id)).populate("Car.user");
         if (auctionSearch.Car.user != userId) {
-            throw new common_1.NotFoundException('Auction not found!');
+            throw new common_1.NotFoundException("Auction not found!");
         }
         const objId = new mongoose_2.default.Types.ObjectId(id);
         const deleted = await this.auctionModel.deleteOne({ _id: objId });

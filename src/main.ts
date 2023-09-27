@@ -1,9 +1,9 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import * as cookieParser from 'cookie-parser';
-import { ValidationPipe } from './config/validationPipe';
-import * as session from 'express-session';
-import { SwaggerInite } from './config/Swagger';
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
+import * as cookieParser from "cookie-parser";
+import { ValidationPipe } from "./config/validationPipe";
+import * as session from "express-session";
+import { SwaggerInit } from "./config/swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,7 +11,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
     credentials: true,
-    allowedHeaders: '* .',
+    allowedHeaders: "* .",
     origin: true,
   });
   app.use(
@@ -19,9 +19,9 @@ async function bootstrap() {
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
-    }),
+    })
   );
-  SwaggerInite(app);
+  SwaggerInit(app);
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
