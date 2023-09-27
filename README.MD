@@ -73,8 +73,7 @@ npm install
    ```
 
 ```
-4. Levantar o banco de dados
-   `docker compose up -d`
+  4. Levantar o banco de dados `docker compose up -d`
 ```
 
 ## Tecnologias Principais
@@ -178,16 +177,15 @@ Este DTO (Objeto de Transferência de Dados) é usado para criar um novo leilão
 - `Car` (Opcional): Uma string que representa o ID do carro associado ao leilão.
 
 - `status` (Opcional): Um enum que representa o status do leilão. Os valores possíveis são os seguintes:
+- `AWAITING`: Aguardando início do leilão.
 
-  - `AWAITING`: Aguardando início do leilão.
+- `ACCEPTING_BID`: Aceitando lances dos usuários.
 
-  - `ACCEPTING_BID`: Aceitando lances dos usuários.
+- `PROCESSING`: Processando o leilão.
 
-  - `PROCESSING`: Processando o leilão.
+- `SOLD`: O carro foi vendido no leilão.
 
-  - `SOLD`: O carro foi vendido no leilão.
-
-  - `CANCELLED`: O leilão foi cancelado.
+- `CANCELLED`: O leilão foi cancelado.
 
 **Exemplo de Requisição:**
 
