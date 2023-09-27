@@ -1,18 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from './entities/user.entity';
-import { Model } from 'mongoose';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { User, UserDocument } from "./entities/user.entity";
+import { Model } from "mongoose";
 
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async exists(user: Pick<User, 'email'>): Promise<boolean> {
+  async exists(user: Pick<User, "email">): Promise<boolean> {
     const userExists = await this.userModel.count(user).exec();
     return userExists > 0;
   }
 
-  async findOne(user: Pick<User, 'email'>): Promise<User> {
+  async findOne(user: Pick<User, "email">): Promise<User> {
     const userFound = await this.userModel.findOne(user).exec();
     return userFound.toObject();
   }

@@ -1,19 +1,16 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { CarsService } from "./cars.service";
-import { Car } from "src/cars/entities/car.entity";
-import { UsersService } from "../users/users.service"; //
+import { User } from "../users/entities/user.entity";
+import { Model } from "mongoose";
 import { getModelToken } from "@nestjs/mongoose";
-import { User } from "src/users/entities/user.entity";
-import { Types } from "mongoose";
+import { UsersService } from "../users/users.service";
+import { Car } from "./entities/car.entity";
 
 describe("CarsService", () => {
   let service: CarsService;
   let usersService: UsersService;
-  let user: User & {
-    _id: Types.ObjectId;
-  } & Required<{
-      _id: Types.ObjectId;
-    }>;
+  let userModel: Model<User>;
+  let user: User;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -21,19 +18,21 @@ describe("CarsService", () => {
         CarsService,
         UsersService,
         {
-          provide: getModelToken(Car.name), // Substitua pelo nome correto da entidade do seu modelo
-          useValue: {}, // Mock ou use o modelo real aqui, dependendo da necessidade do teste
+          provide: getModelToken(User.name),
+          useValue: userModel,
         },
+        // ...
       ],
     }).compile();
 
     service = module.get<CarsService>(CarsService);
     usersService = module.get<UsersService>(UsersService);
+    userModel = module.get<Model<User>>(getModelToken(User.name));
 
-    const user = await usersService.create({
-      name: "furgao",
-      email: "fusca",
-      password: "chevet",
+    user = await usersService.create({
+      name: "Test user",
+      email: "test@test.com",
+      password: "TestPass",
     });
   });
 
@@ -54,12 +53,12 @@ describe("CarsService", () => {
       plate: "",
       mileage: "",
     };
+    const _id = "dsd";
 
-    const createdCar = await service.create(car, user._id.toString());
+    const createdCar = await service.create(car, _id);
 
     expect(createdCar).toBeDefined();
     expect(createdCar.model).toBe(car.model);
-    // Adicione mais expectativas de acordo com sua lógica de criação de carro
   });
 
   it("update a Car", async () => {
@@ -77,7 +76,7 @@ describe("CarsService", () => {
     };
     const id = "1";
 
-    const updatedCar = await service.update(id, car, user._id.toString());
+    const updatedCar = await service.update(id, car, id);
 
     expect(updatedCar).toBeDefined();
     expect(updatedCar.model).toBe(car.model);

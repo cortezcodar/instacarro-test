@@ -1,7 +1,7 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
-import { Bid } from 'src/bid/entities/bid.entity';
-import { Car } from 'src/cars/entities/car.entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import * as mongoose from "mongoose";
+import { Bid } from "../../bid/entities/bid.entity";
+import { Car } from "../../cars/entities/car.entity";
 
 export type AuctionDocument = Auction & mongoose.Document;
 
@@ -11,7 +11,7 @@ export type AuctionDocument = Auction & mongoose.Document;
 export class Auction {
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Car',
+    ref: "Car",
   })
   Car: Car;
 
@@ -20,7 +20,7 @@ export class Auction {
 
   @Prop({
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Bid',
+    ref: "Bid",
   })
   bids: Bid[];
 }
