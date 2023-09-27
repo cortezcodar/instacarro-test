@@ -274,3 +274,6 @@ O campo auction é opcional, o que significa que você pode criar um lance sem a
 O campo amount é opcional e pode conter até 4 casas decimais para representar o valor do lance.
 
 Certifique-se de fornecer os dados necessários de acordo com os requisitos do seu sistema ao criar um novo lance.
+
+
+### Obrigado por visitar meu repositório!
